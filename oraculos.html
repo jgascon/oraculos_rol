@@ -38,19 +38,22 @@
             padding: 0;
             background-color: black;
             text-align: center;
+            overscroll-behavior: contain;
+            overscroll-behavior-y: contain;
             //border: 1px solid red;
         }
-
+        
         #oracles_body {
             display: block;
             position: absolute;
             top: 2mm;
             left: 2mm;
             right: 2mm;
-            bottom: 6cm;
+            bottom: 65mm;
             border-radius: 5mm;
             overflow-x: auto;
             overflow-y: scroll;
+            overscroll-behavior: contain;            
             border: 1px solid white;
         }
 
@@ -61,8 +64,10 @@
             left: 2mm;
             right: 2mm;
             width: auto;
-            height: 54mm;
-            overflow-y: scroll;
+            height: 60mm;
+            overflow-x: scroll;
+            overflow-y: auto;
+            overscroll-behavior: contain;            
             //border: 1px solid red;
         }
     </style>
@@ -490,6 +495,9 @@
 
 
     <div id="oracles_body">
+        <h2>
+            Or&acute;culos 
+        </h2>
         <h3>
             Creado por: 
         </h3>
@@ -537,5 +545,10 @@
         <button onclick="reset_poker_deck(); clear_oracles_body()">Reset Poker</button>
     </div> <!-- <div id="buttons_body"> -->
 
+    <script>
+        document.addEventListener('touchstart', touchstartHandler, {passive: false});
+        document.addEventListener('touchmove', touchmoveHandler, {passive: false});
+    </script>
+    
 </body>
 </html>

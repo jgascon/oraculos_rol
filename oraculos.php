@@ -19,6 +19,24 @@
         https://github.com/jgascon/oraculos_rol.git
 -->
 
+<?
+
+function file_to_string($filename) {
+    $contenido = "";
+
+    $fd = fopen($filename, 'rb');
+    if (flock($fd, LOCK_SH)) {
+        $contenido = file_get_contents($filename);
+        flock($fd, LOCK_UN);
+    } //if (flock($fd, LOCK_SH))
+    fclose($fd);
+
+    return $contenido;
+} //function file_to_string($filename)
+
+?>
+
+
 <head>
 	<title>Oraculos:</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -38,11 +56,10 @@
             padding: 0;
             background-color: black;
             text-align: center;
-            overscroll-behavior: contain;
-            overscroll-behavior-y: contain;
+            overscroll-behavior: contain;            
             //border: 1px solid red;
         }
-        
+
         #oracles_body {
             display: block;
             position: absolute;
@@ -73,46 +90,45 @@
             //border: 1px solid red;
         }
     </style>
-    <script src="basic.js"></script>
-    
-    <script src="movimientos_dj.js"></script>
-    <script src="cosas.js"></script>
-    <script src="armas.js"></script>
-    <script src="vehiculos.js"></script>
-    <script src="heridas.js"></script>
-    <script src="trastornos.js"></script>
-    <script src="detalles.js"></script>
-    <script src="lugares.js"></script>
-    <script src="objetos_paramos_aventurados.js"></script>
-
-    <script src="icons.js"></script>
-    <script src="emojis.js"></script>
-    <script src="fortunes.js"></script>
-    <script src="ironsworn.js"></script>
-    <script src="dw.js"></script>
-    <script src="emociones.js"></script>
-    <script src="mecanismos.js"></script>
-    <script src="inmersion.js"></script>
-
-    <script src="monstruos.js"></script>
-    <script src="adjetivos_lovecraft.js"></script>
-    <script src="pistas.js"></script>
-    <script src="obstaculos.js"></script>
-    <script src="pnjs.js"></script>
-    <script src="consecuencias.js"></script>
-    <script src="misiones.js"></script>
-
-    <script src="pjs.js"></script>
-    <script src="push.js"></script>
-    <script src="yes_no.js"></script>
-
-    <script src="poker_deck.js"></script>
-    <script src="liminal_horror.js"></script>
-    <script src="magia.js"></script>
-    <script src="tesoros.js"></script>
-    <script src="asentamientos.js"></script>
-
     <script>
+        <? echo file_to_string(__DIR__ . "/basic.js"); ?>
+
+        <? echo file_to_string(__DIR__ . "/movimientos_dj.js"); ?>
+        <? echo file_to_string(__DIR__ . "/cosas.js"); ?>
+        <? echo file_to_string(__DIR__ . "/detalles.js"); ?>
+        <? echo file_to_string(__DIR__ . "/armas.js"); ?>
+        <? echo file_to_string(__DIR__ . "/vehiculos.js"); ?>
+        <? echo file_to_string(__DIR__ . "/heridas.js"); ?>
+        <? echo file_to_string(__DIR__ . "/trastornos.js"); ?>
+        <? echo file_to_string(__DIR__ . "/lugares.js"); ?>
+        <? echo file_to_string(__DIR__ . "/objetos_paramos_aventurados.js"); ?>
+
+        <? echo file_to_string(__DIR__ . "/icons.js"); ?>
+        <? echo file_to_string(__DIR__ . "/emojis.js"); ?>
+        <? echo file_to_string(__DIR__ . "/fortunes.js"); ?>
+        <? echo file_to_string(__DIR__ . "/ironsworn.js"); ?>
+        <? echo file_to_string(__DIR__ . "/dw.js"); ?>
+        <? echo file_to_string(__DIR__ . "/emociones.js"); ?>
+        <? echo file_to_string(__DIR__ . "/mecanismos.js"); ?>
+        <? echo file_to_string(__DIR__ . "/inmersion.js"); ?>
+
+        <? echo file_to_string(__DIR__ . "/monstruos.js"); ?>
+        <? echo file_to_string(__DIR__ . "/adjetivos_lovecraft.js"); ?>
+        <? echo file_to_string(__DIR__ . "/pistas.js"); ?>
+        <? echo file_to_string(__DIR__ . "/obstaculos.js"); ?>
+        <? echo file_to_string(__DIR__ . "/pnjs.js"); ?>
+        <? echo file_to_string(__DIR__ . "/consecuencias.js"); ?>
+        <? echo file_to_string(__DIR__ . "/misiones.js"); ?>
+
+        <? echo file_to_string(__DIR__ . "/pjs.js"); ?>
+        <? echo file_to_string(__DIR__ . "/push.js"); ?>
+        <? echo file_to_string(__DIR__ . "/yes_no.js"); ?>
+
+        <? echo file_to_string(__DIR__ . "/poker_deck.js"); ?>
+        <? echo file_to_string(__DIR__ . "/liminal_horror.js"); ?>
+        <? echo file_to_string(__DIR__ . "/magia.js"); ?>
+        <? echo file_to_string(__DIR__ . "/tesoros.js"); ?>
+        <? echo file_to_string(__DIR__ . "/asentamientos.js"); ?>
 
         function clear(element_id) {
             let element = document.getElementById(element_id);
@@ -499,7 +515,7 @@
     <div id="oracles_body">
         <h2>
             Or&aacute;culos 
-        </h2>
+        </h2>        
         <h3>
             Creado por: 
         </h3>
@@ -551,6 +567,6 @@
         document.addEventListener('touchstart', touchstartHandler, {passive: false});
         document.addEventListener('touchmove', touchmoveHandler, {passive: false});
     </script>
-    
+        
 </body>
 </html>
